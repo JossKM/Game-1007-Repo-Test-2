@@ -16,6 +16,7 @@
 // switch(
 // goto
 
+//No GUI guy was here
 
 #include <iostream>
 
