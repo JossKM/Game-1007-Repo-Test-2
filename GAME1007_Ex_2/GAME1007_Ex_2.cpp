@@ -93,7 +93,7 @@ int main()
 		} while (playerGuess != correctAnswer);
 		cout << "Winner!" << endl;
 		//If we get here, then playerGuess == correctAnswer
-		cout << "Thank you for playing!\n";
+		cout << nameOfPlayer1 << " and " << nameOfPlayer2 << " thank you for playing!\n";
 
 		cout << "Would you like to play again? Y/N\n";
 
