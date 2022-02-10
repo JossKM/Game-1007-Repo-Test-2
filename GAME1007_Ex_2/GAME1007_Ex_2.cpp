@@ -31,13 +31,13 @@ int main()
 	int playerGuess;
 
 	//Get player names
-	//cout << "Hello! Welcome to the number guessing game\n";
-	//cout << "Player 1, what is your name?" << endl;
-	//cin >> nameOfPlayer1;
-	//cout << "Welcome, " << nameOfPlayer1 << endl;
-	//cout << "Player 2, what is your name?" << endl;
-	//cin >> nameOfPlayer2;
-	//cout << "Welcome, " << nameOfPlayer2 << endl;
+	cout << "Hello! Welcome to the number guessing game\n";
+	cout << "Player 1, what is your name?" << endl;
+	cin >> nameOfPlayer1;
+	cout << "Welcome, " << nameOfPlayer1 << endl;
+	cout << "Player 2, what is your name?" << endl;
+	cin >> nameOfPlayer2;
+	cout << "Welcome, " << nameOfPlayer2 << endl;
 
 	//Algorithm for pseudorandom number, from a seed
 	// Take the seed, then multiply it by 6 and divide it by 7, and add 2
@@ -48,50 +48,59 @@ int main()
 
 	srand(time(NULL));
 
-	//Generate a Number from 1 to 100 inclusive, call it "CorrectAnswer"
-	correctAnswer = ((rand() % 100) + 1); // assign correctAnswer the value of a pseudorandom number, modulo 100, plus 1
-	// A / B (a divided by b) tells you how many times B fits into A
-	// A % B (a modulo b) tells you what the remainder is after doing A / B
-
-	cout << correctAnswer << endl; // erase me later! For debugging purposes it's useful for us to be able to cheat....
-
-	cout << "I'm thinking of a number from 1 to 100" << endl;
-
-	//Generate a Number from 1 to 2, call it "WhoseTurnItIs"
-	whoseTurnItIs = (rand() % 2) + 1;
-
-	//while (playerGuess != correctAnswer) // while(condition) says check if condition is true. If yes, then do what's inside, then go back to the top, and check again.
-	do //do...while(condition) says do the things first, then check the condition to determine if it should return to the top. Only difference from while is it always does what is inside first.
+	char choiceToRestart;
+	do
 	{
-		if (whoseTurnItIs == 1) // this is the equals operator. It will tell you if the left is equal to the right, returning true or false
-		{
-			cout << nameOfPlayer1;
-		}
-		else
-		{
-			cout << nameOfPlayer2;
-		}
-		cout << ", guess a number!" << endl;
+		//Generate a Number from 1 to 100 inclusive, call it "CorrectAnswer"
+		correctAnswer = ((rand() % 100) + 1); // assign correctAnswer the value of a pseudorandom number, modulo 100, plus 1
+		// A / B (a divided by b) tells you how many times B fits into A
+		// A % B (a modulo b) tells you what the remainder is after doing A / B
 
-		cin >> playerGuess;
+		cout << correctAnswer << endl; // erase me later! For debugging purposes it's useful for us to be able to cheat....
 
-		if (playerGuess < correctAnswer)
+		cout << "I'm thinking of a number from 1 to 100" << endl;
+
+		//Generate a Number from 1 to 2, call it "WhoseTurnItIs"
+		whoseTurnItIs = (rand() % 2) + 1;
+
+		//while (playerGuess != correctAnswer) // while(condition) says check if condition is true. If yes, then do what's inside, then go back to the top, and check again.
+		do //do...while(condition) says do the things first, then check the condition to determine if it should return to the top. Only difference from while is it always does what is inside first.
 		{
-			cout << "You guessed too low!\n";
-		}
-		else if (playerGuess > correctAnswer)
-		{
-			cout << "You guessed too high!\n";
-		}
+			if (whoseTurnItIs == 1) // this is the equals operator. It will tell you if the left is equal to the right, returning true or false
+			{
+				cout << nameOfPlayer1;
+			}
+			else
+			{
+				cout << nameOfPlayer2;
+			}
+			cout << ", guess a number!" << endl;
 
-		//WhoseTurnItIs is now(1 - (WhoseTurnItIs - 1)) + 1
-		whoseTurnItIs = (1 - (whoseTurnItIs - 1)) + 1; // swap turns between 1 and 2
-		//loop back to the start...?
-	} while (playerGuess != correctAnswer);
+			cin >> playerGuess;
 
-	cout << "Winner!" << endl;
-	//If we get here, then playerGuess == correctAnswer
-	cout << "Thank you for playing!\n";
+			if (playerGuess < correctAnswer)
+			{
+				cout << "You guessed too low!\n";
+			}
+			else if (playerGuess > correctAnswer)
+			{
+				cout << "You guessed too high!\n";
+			}
+
+			//WhoseTurnItIs is now(1 - (WhoseTurnItIs - 1)) + 1
+			whoseTurnItIs = (1 - (whoseTurnItIs - 1)) + 1; // swap turns between 1 and 2
+			//loop back to the start...?
+		} while (playerGuess != correctAnswer);
+		cout << "Winner!" << endl;
+		//If we get here, then playerGuess == correctAnswer
+		cout << "Thank you for playing!\n";
+
+		cout << "Would you like to play again? Y/N\n";
+
+		cin >> choiceToRestart;
+
+	} while (choiceToRestart == 'Y');
+
 
 	system("pause");
 }
